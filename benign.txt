@@ -1,0 +1,1 @@
+This is just a text document. I am going to test with several different extensions and formats... includine encryption, encoding and later changes to the individual bytes.

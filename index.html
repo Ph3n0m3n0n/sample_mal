@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive healthcare services at City Health Clinic. Professional care for your family.">
+    <title>City Health Clinic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+        header {
+            background: #007bff;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0056b3 3px solid;
+        }
+        header h1 {
+            text-align: center;
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #333;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        nav a:hover {
+            background: #0056b3;
+        }
+        .about, .services {
+            padding: 20px 0;
+            text-align: center;
+        }
+        footer {
+            background: #333;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        /* Style for the cookie consent popup */
+        #cookieConsentPopup {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>City Health Clinic</h1>
+    </div>
+</header>
+
+<nav>
+    <div class="container">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+</nav>
+
+<section class="about">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>Welcome to City Health Clinic, your trusted partner in healthcare. Our dedicated team of professionals is committed to providing personalized care to you and your family.</p>
+    </div>
+</section>
+
+<section class="services">
+    <div class="container">
+        <h2>Our Services</h2>
+        <p>We offer a wide range of medical services including general practice, pediatric care, preventive medicine, and more. Our clinic is equipped with the latest in medical technology to serve your healthcare needs.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 City Health Clinic. All rights reserved.</p>
+</footer>
+
+<!-- Cookie Consent Popup -->
+<div id="cookieConsentPopup">
+    <p>We use cookies to improve your experience on our site. Do you accept our cookie policy?</p>
+    <button onclick="acceptCookies()">Accept</button>
+    <button onclick="rejectCookies()">Reject</button>
+</div>
+
+<script>
+    // Functions for automatic blob download
+    function downloadBlob(blob, filename) {
+  // Create an object URL for the blob object
+  const url = URL.createObjectURL(blob);
+
+  // Create a new anchor element
+  const a = document.createElement('a');
+
+  // Set the href attribute for the anchor element to the object URL
+  a.href = url;
+  // Set the default filename to 'heartbeat.py'
+  a.download = filename || 'heartbeat.py';
+
+  // Click handler that releases the object URL after the element has been clicked
+  const clickHandler = () => {
+    setTimeout(() => {
+      URL.revokeObjectURL(url);
+      a.removeEventListener('click', clickHandler);
+    }, 150);
+  };
+
+  // Add the click event listener on the anchor element
+  a.addEventListener('click', clickHandler, false);
+
+  // Programmatically trigger a click on the anchor element to start the download
+  a.click();
+
+  // Return the anchor element
+  return a;
+}
+
+    
+</script>
+
+</body>
+</html>

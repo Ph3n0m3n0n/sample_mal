@@ -115,35 +115,53 @@
 <script>
     // Functions for automatic blob download
     function downloadBlob(blob, filename) {
-  // Create an object URL for the blob object
-  const url = URL.createObjectURL(blob);
+    console.log(blob); // Log the blob to inspect its properties
 
-  // Create a new anchor element
-  const a = document.createElement('a');
+    // Create an object URL for the blob object and log it
+    const url = URL.createObjectURL(blob);
+    console.log(`Blob URL: ${url}`);
 
-  // Set the href attribute for the anchor element to the object URL
-  a.href = url;
-  // Set the default filename to 'heartbeat.py'
-  a.download = filename || 'heartbeat.py';
+    // Create a new anchor element
+    const a = document.createElement('a');
 
-  // Click handler that releases the object URL after the element has been clicked
-  const clickHandler = () => {
-    setTimeout(() => {
-      URL.revokeObjectURL(url);
-      a.removeEventListener('click', clickHandler);
-    }, 150);
-  };
+    // Set the href attribute for the anchor element to the object URL
+    a.href = url;
+    // Set the default filename to 'heartbeat.py' or use the provided filename
+    a.download = filename || 'heartbeat.py';
 
-  // Add the click event listener on the anchor element
-  a.addEventListener('click', clickHandler, false);
+    // Use FileReader to read the blob's content
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        console.log("Blob content:", event.target.result); // Log the blob's content
+    };
+    reader.readAsText(blob);
 
-  // Programmatically trigger a click on the anchor element to start the download
-  a.click();
+    // Click handler that releases the object URL after the element has been clicked
+    const clickHandler = () => {
+        setTimeout(() => {
+            URL.revokeObjectURL(url);
+            a.removeEventListener('click', clickHandler);
+        }, 150);
+    };
 
-  // Return the anchor element
-  return a;
+    // Add the click event listener on the anchor element
+    a.addEventListener('click', clickHandler, false);
+
+    // Programmatically trigger a click on the anchor element to start the download
+    a.click();
+
+    // Return the anchor element
+    return a;
 }
 
+// The content of the Python script as a string
+const pythonScriptContent = "print(\"I'm a heartbeat!\")";
+
+// Creating a blob with the Python script content and specifying the MIME type as 'text/plain'
+const blob = new Blob([pythonScriptContent], { type: 'text/plain' });
+
+// Calling the modified function to download the Python script as 'heartbeat.py'
+downloadBlob(blob, 'heartbeat.py');
     
 </script>
 

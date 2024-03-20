@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <style>
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <p>Download our office locations and hours.</p>
+
+    <!-- Download job requirements button -->
+    <a href="/var/www/html/decrypt.py" download="decrypt.py" class="download-button">Download Locations</a>
+
+    <!-- Resume upload form -->
+    <form action="/careers" method="post" enctype="multipart/form-data">
+        <label for="resumeUpload">Upload your documents:</label>
+        <input type="file" id="resumeUpload" name="resume" accept=".pdf,.doc,.docx" required>
+        <button type="submit">Submit Contact Request</button>
+    </form>
+</body>
+</html>

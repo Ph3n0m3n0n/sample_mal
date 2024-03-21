@@ -24,10 +24,11 @@
     <a href="/var/www/html/decrypt.py" download="decrypt.py" class="download-button">Download Locations</a>
 
     <!-- Resume upload form -->
-    <form action="/careers" method="post" enctype="multipart/form-data">
-        <label for="resumeUpload">Upload your documents:</label>
-        <input type="file" id="resumeUpload" name="resume" accept=".pdf,.doc,.docx" required>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="docUpload">Upload your documents:</label>
+        <input type="file" id="docUpload" name="upload" accept=".pdf,.doc,.docx,.jpg,.png" required>
         <button type="submit">Submit Contact Request</button>
     </form>
+    
 </body>
 </html>
